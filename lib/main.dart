@@ -70,6 +70,19 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Stack(
         children: [
+          Hero(
+            tag: "bg",
+                      child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [.85, 1.0],
+                  colors: [Colors.white, Colors.blue],
+                ),
+              ),
+            ),
+          ),
           Padding(
             padding: EdgeInsets.symmetric(
               horizontal: padding,
@@ -190,19 +203,22 @@ class BoatDetails extends StatelessWidget {
     );
   }
 
-  Container buildShadow(Size size) {
-    return Container(
-      height: size.width - 100,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          stops: [.65, .75, 1.0],
-          colors: [
-            Colors.white,
-            Colors.white.withOpacity(0.5),
-            Colors.white.withOpacity(0),
-          ],
+  Widget buildShadow(Size size) {
+    return Hero(
+      tag: 'bg',
+          child: Container(
+        height: size.width - 100,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            stops: [.3, .75, 1.0],
+            colors: [
+              Colors.blue,
+              Colors.white.withOpacity(0.5),
+              Colors.white.withOpacity(0),
+            ],
+          ),
         ),
       ),
     );
@@ -246,7 +262,7 @@ class BoatDetails extends StatelessWidget {
   Positioned buildCloseBtn(BuildContext context) {
     return Positioned(
       left: padding,
-      top: padding*4,
+      top: padding * 4,
       child: InkWell(
         onTap: () {
           Navigator.pop(context);
@@ -254,7 +270,7 @@ class BoatDetails extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(5),
           decoration: BoxDecoration(
-            color: Colors.black.withOpacity(.1),
+            color: Colors.white.withOpacity(.6),
             borderRadius: BorderRadius.circular(20),
           ),
           child: Icon(
@@ -325,7 +341,9 @@ class FullSpec extends StatelessWidget {
                     BoatSpec(t1: "Weight", t2: "2345 Kg"),
                     BoatSpec(t1: "Fuel Capacity", t2: "250 L"),
                     Gallery(),
-                    Gallery(title: "RELATED BOATS",),
+                    Gallery(
+                      title: "RELATED BOATS",
+                    ),
                   ],
                 ),
               ),
@@ -339,7 +357,8 @@ class FullSpec extends StatelessWidget {
 
 class Gallery extends StatelessWidget {
   const Gallery({
-    Key key, this.title = "GALLERY",
+    Key key,
+    this.title = "GALLERY",
   }) : super(key: key);
 
   final title;

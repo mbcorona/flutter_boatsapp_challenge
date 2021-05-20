@@ -1,6 +1,11 @@
 # flutter_boats_challenge
 
-A new Flutter project.
+Flutter Challenge | Boats App
+
+## Video Demo
+
+https://photos.app.goo.gl/Lyy6BfoA1wVCD1CB8
+
 
 ## Getting Started
 
